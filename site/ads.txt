@@ -1,0 +1,4 @@
+# Setup Desk ads.txt
+# Placeholder. Paste your AdSense publisher ID into site/site-config.js
+# and this file is filled in automatically on the next Netlify deploy:
+# google.com, pub-0000000000000000, DIRECT, f08c47fec0942fa0

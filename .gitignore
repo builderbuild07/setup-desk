@@ -1,0 +1,7 @@
+node_modules/
+screenshots/
+.netlify/
+.DS_Store
+Thumbs.db
+# Old single-page design, kept locally for reference only
+/index.html
