@@ -1,66 +1,89 @@
 # Setup Desk: where we're up to
 
-_Last updated 19 November 2026_
+_Last updated 20 November 2026_
 
-## Done
+## Status
 
-- **Site built** in `site/` with nine pages: Home, Best Console, Best TV, Storage Guide, Settings Checklist, Money Tracker, Privacy Policy, Affiliate Disclosure and About, plus a 404 page.
-- **Design:** a clean review-site look with one accent colour, comparison tables near the top of each guide, "Our pick", "Best value" and "Skip" labels, and "YOUR PHOTO" placeholders.
-- **Screenshots:** every page was checked on phone and desktop with Playwright. No page is wider than the screen.
-- **Settings checklist:** tested. Ticks save after a reload, and Reset clears them.
-- **Money setup:** everything is driven by `site/site-config.js`. A Netlify build step (`scripts/build.mjs`) fills in ads.txt, Amazon tags, AdSense code and the sitemap. I tested it with fake values on a copy of the site.
-- **Docs:**
-  - `CLAUDE.md`: design, writing and money rules for future Claude sessions
-  - `MONEY-SETUP.md`: Amazon and AdSense signup, step by step
-- **Git:**
-  - The repo is set up on branch `main`, with the first commit made as `builderbuild07` using the GitHub private email.
-  - It's linked to `https://github.com/builderbuild07/setup-desk.git`, but **that GitHub repo doesn't exist yet and nothing has been pushed.**
+- **Code:** everything is on GitHub at `builderbuild07/setup-desk` (branch `main`).
+- **Amazon:** your tag `setupdesk-22` is set in `site/site-config.js`. The build tags all 27 Amazon links with it.
+- **Byline:** set to **Tom** on every page.
+- **Not done yet:** Netlify deploy (if you haven't connected it), contact email, photos, AdSense.
 
-## Next steps (in order)
+## What changed on 20 November 2026
 
-### 1. Create the GitHub repo
-Go to github.com/new and name it exactly **`setup-desk`**. Public or private both work. Leave "Add a README" unticked, then click **Create repository**.
+### Facts checked and fixed
+- **Frame-rate dips** now match the reports of Digital Foundry's analysis:
+  - PS5 Pro: ~24fps, only in extreme scenes
+  - PS5: ~23fps
+  - Series X: ~20–22fps
+  - Series S: ~20fps or lower
+  The old figures (~20–23, "low 20s", ~18–20) were off.
+- **Digital Foundry date:** "published 18 November 2026" changed to "launch analysis, November 2026". I couldn't confirm the exact date.
+- **Xbox prices added.** Microsoft raised Australian prices in August 2026:
+  - Series X: $1,099 disc, $999 digital
+  - Series S: $699 for 512GB, $849 for 1TB
+  The Series X is now ~$80–100 dearer than the PS5, so it lost its "Best value" label. It's now "Same as PS5".
+- **Physical copy:** Rockstar has *confirmed* the box contains a download code, not a disc (it used to say "reportedly"). The Digital Edition is now the recommended PS5.
+- **PS5 storage:** the current Digital Edition is 825GB and the disc model is 1TB. The storage table is updated.
+- **210GB download:** still "reportedly". It comes from the PlayStation Store listing, and Rockstar hasn't published a size.
+- **Removed (couldn't verify):**
+  - "Xbox Cloud Gaming streams the Series S version"
+  - "Rockstar hinted at more optimisation"
+- **The "2.5 metres, go 65-inch" tip** is now labelled as my rule of thumb.
+- **TVs updated to 2026 models:** LG C6, Hisense U7S and TCL C7L/P7LS. The 2025 models (LG C5, TCL C7K, Hisense U7Q) are being cleared out.
+- **Checked with no problems found:**
+  - All internal links work.
+  - All Amazon links have `rel="sponsored"`.
+  - No hype words or US spellings.
 
-### 2. Push
-In Claude Code type:
-```
-! git push -u origin main
-```
-Sign in to GitHub in the window that opens. Refresh the repo page and you should see the files.
+### New content
+- **Home page:** three complete setups, each with console, TV (exact model and size), storage and headset:
+  - **The $1,500 setup** comes to **about $1,615**. It's PS5 Digital + TCL 50" P7LS + built-in storage + earphones you already own. A new PS5 and a TV can't hit $1,500 at 2026 prices. The page says so instead of hiding it.
+  - **The $3,000 setup** comes to **about $2,875**: PS5 Pro + Hisense 55" U7S + SteelSeries Arctis Nova 3P.
+  - **The no-compromise setup** comes to **about $5,990 at RRP**, or under $5,000 at current TV prices: PS5 Pro + LG 65" C6 + WD_BLACK SN850X 2TB + Pulse Elite.
+- **TV page:** a "pick by room" table with exact model numbers and sizes:
+  - dark room (LG OLED65C6PSA)
+  - bright room (Hisense 65U7SAU)
+  - tight budget (TCL 55C7L)
+  - bedroom (LG OLED48C6PSA, or TCL 50P7LS if cheap)
+- **New Accessories page** (`/gta-6-accessories/`), with Our pick, Best value and Skip in each section:
+  - **Headsets:** Pulse Elite / Arctis Nova 3P / Pulse Explore
+  - **Controllers:** DualSense / DualSense Edge (skip for GTA 6)
+  - **Charging docks:** Sony station / third-party dual docks
+  - **Soundbars:** Sonos Beam Gen 2 / Samsung HW-B400F / skip Bluetooth-only
+- **"What I'd buy" box** signed "Tom" at the top of the Console, TV, Storage and Accessories pages. The Settings page has a "What I'd do first" box instead.
+- **Site-wide:** the nav and footer gained an Accessories link, and the sitemap includes the new page.
 
-### 3. Deploy on Netlify
-1. Go to app.netlify.com and choose **Add new site → Import an existing project → GitHub**.
-2. Allow access to the repo and pick `setup-desk`.
-3. The build settings fill in from `netlify.toml` (publish `site`, command `node scripts/build.mjs`), so just click **Deploy**.
-4. When it says **Published**, open the deploy log. You should see `Amazon tag: NOT SET` and `AdSense ID: NOT SET`. That's expected for now.
-5. Rename the site under **Site configuration → Change site name**, e.g. `setupdesk.netlify.app`.
+## Check these yourself
 
-From then on, every push (or edit made on github.com) redeploys the site in about a minute.
+These are things I couldn't fully verify, or that are your call:
 
-## Then: specific recommendations
+1. **Prices.** Every TV, SSD, headset, dock and soundbar price is a snapshot of Australian store listings from 20 November 2026. They'll move, especially around **Black Friday (27 November)**. Re-check before you make TikToks quoting them, and update the "checked" dates when you change them.
+2. **The bundle totals** depend on those prices: $1,615 / $2,875 / $5,990.
+3. **Sonos Beam (Gen 2):**
+   - Sonos launched the Beam Ultra ($1,099) in September, and it isn't clear whether the Beam Gen 2 will stay on sale.
+   - If it's gone, swap the pick on the Accessories page to the Beam Ultra or another HDMI eARC soundbar.
+4. **DualSense Edge price:** $329.95 is Sony's AU RRP after its January 2025 cut. One 2026 source said $319. Check Sony's store.
+5. **Amazon privacy link** on the Privacy Policy page: Amazon blocks automated checks, so click it once and make sure it opens Amazon Australia's privacy notice.
+6. **Digital Foundry figures** came from news reports of their analysis, not the video itself. One report says DF only tested pre-release footage on base PS5. Watch the DF video and correct anything that's off.
+7. **The "How we test" method** on the Money Tracker page is a method I wrote for you. Make sure it's how you'll actually test.
+8. **Contact email** is still `you@example.com`. Set `contactEmail` in `site/site-config.js`.
 
-### This week
-- **Fill in your details** in `site/site-config.js`: `authorName` and `contactEmail`. Right now every byline says "Your Name", and the About and Privacy pages show `you@example.com`. A real name and contact address make the site look trustworthy, and AdSense reviewers look for them.
-- **Replace the photo placeholders** with your own photos and screenshots. Start with the home page setup shot and the four TV photos. Real photos are the biggest thing that separates this from an AI-made site.
-- **Check the facts I added** that weren't in your original research:
-  - the built-in storage table (825GB / 1TB / 2TB / 512GB)
-  - the Xbox Expansion Card models (Seagate, WD_BLACK C50)
-  - "sit more than 2.5m away → 65-inch"
-  - the SSD install steps
-  - the "How we test" method on the money tracker
-- **Delete the old `index.html`** in the top folder (the dark "Neon Setup" design). It isn't published or tracked by Git; it's only there for reference.
+## Next steps
 
-### Before signing up for anything
-- **Buy a domain and connect it in Netlify** (Domain management → Add a domain). AdSense won't accept a `.netlify.app` address, and a real domain looks better to Amazon. A `.com.au` or `.au` name suits an Australian site.
-- **Add the site to Google Search Console** (free) so you can see search traffic. It's also how you'll know when traffic is steady enough to sign up for Amazon.
-- **Add 3–5 rows to the money tracker** once you've timed some methods. There are instructions in a comment inside `site/gta-6-money-tracker/index.html`. An empty table is fine for launch, but fill it before applying to AdSense.
-- **Update the console and TV pages** if Digital Foundry or Rockstar publish new numbers or patches (for example a 60fps mode). Change the "Last updated" date when you do.
+1. **Netlify:** if it isn't connected yet, go to app.netlify.com and choose **Add new site → Import an existing project → GitHub → setup-desk → Deploy**.
+   - The deploy log should say `Amazon tag: setupdesk-22` and `Tagged 27 Amazon links`.
+   - If it's already connected, the push just now redeployed it.
+2. **On your phone**, tap a "Check price" button on the live site. The Amazon address should end in `tag=setupdesk-22`.
+3. **Add your TikTok profile** under "Websites and mobile apps" in Associates Central before putting Amazon links on TikTok. Remember the 180-day / 3-sales window started when you signed up.
+4. **Photos:** replace the "YOUR PHOTO" boxes, starting with the home page and the TV page.
+5. **Buy a domain** and connect it in Netlify. You'll need it before applying for AdSense (see MONEY-SETUP.md).
+6. **Add your first money tracker rows** once you've timed some methods.
+7. **Delete the old `index.html`** in the top folder. It's the old design and isn't published.
 
-### Making money (details in MONEY-SETUP.md)
-1. **Amazon Associates Australia:** only once visitors arrive every day (roughly 50+ a day). The 180-day window to get 3 sales starts at signup. Paste the `-22` tag into `amazonTag`.
-2. **Google AdSense:** once you have a domain, finished pages and some photos. Paste your `pub-` ID into `adsensePublisherId`, then verify and request review. After approval, turn on Auto ads or create two ad units for `adSlotTop` / `adSlotMid`, and set up the European consent message.
+## How to make content changes later
 
-### Growth ideas for later
-- Turn each guide into a TikTok, e.g. "PS5 vs PS5 Pro for GTA 6 in 30 seconds", and put the site in your bio. If you ever put Amazon links on TikTok, add your profile in Associates Central first.
-- Add a "Best in-game graphics settings" section to the checklist once you've tested them (there's already a placeholder item for it).
-- Possible new pages: best headset, best controller, PS5 Pro vs PS5 deep-dive. Follow `CLAUDE.md` when adding them, and remember the nav and footer need updating on every page.
+The page HTML in `site/` is the source of truth. Edit it directly and follow `CLAUDE.md`:
+- The header, nav and footer repeat in every page.
+- Australian spelling, no hype words.
+- Say whose price it is and when it was checked.
