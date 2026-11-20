@@ -297,3 +297,37 @@ td .buy{min-height:40px;padding:0 12px;font-size:.85rem;white-space:nowrap}
 }
 p.prose{display:block}
 .footer-brand{align-content:start}
+
+/* ---------- "What I'd buy" box (top of each guide) ---------- */
+.wib{background:#fff;border:1px solid var(--rule);border-top:3px solid var(--accent);padding:16px 18px 18px;display:grid;gap:10px;max-width:860px}
+.wib__label{font:600 .72rem var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.wib__text{font:500 1.15rem/1.5 var(--serif);letter-spacing:-.005em;max-width:62ch}
+.wib__sig{font-size:.88rem;color:var(--ink-3)}
+.wib__sig a{color:inherit}
+
+/* ---------- Setup bundles ---------- */
+.bundles{display:grid;border-top:2px solid var(--ink)}
+.bundle{display:grid;gap:12px;align-content:start;padding:20px 0;border-bottom:1px solid var(--rule)}
+.bundle__head{display:grid;gap:4px}
+.bundle__head h3{font-size:1.4rem}
+.bundle__for{color:var(--ink-2);font-size:.93rem}
+.bundle__items{list-style:none;padding:0;border-top:1px solid var(--ink)}
+.bundle__items li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 12px;padding:10px 0;border-bottom:1px solid var(--rule)}
+.bi-k{grid-column:1/-1;font:500 .68rem var(--mono);letter-spacing:.07em;text-transform:uppercase;color:var(--ink-3)}
+.bi-n{font-weight:600}
+.bi-p{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums;font-weight:500}
+.bi-w{grid-column:1/-1;font-size:.88rem;color:var(--ink-2)}
+.bundle__total{display:flex;justify-content:space-between;align-items:baseline;gap:12px;border-top:2px solid var(--ink);padding-top:10px}
+.bundle__total span:first-child{font:600 .72rem var(--mono);letter-spacing:.07em;text-transform:uppercase}
+.bundle__total strong{font:700 1.6rem/1 var(--serif);font-variant-numeric:tabular-nums lining-nums}
+.bundle__note{font-size:.82rem;color:var(--ink-3)}
+@media (min-width:960px){
+  .bundles{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .bundle{padding:20px 22px;border-bottom:0;border-left:1px solid var(--rule)}
+  .bundle:first-child{padding-left:0;border-left:0}
+  .bundle:last-child{padding-right:0}
+}
+.cmp td.price{white-space:nowrap}
+/* Text cells in comparison tables: scroll rather than squash to one word per line. */
+.cmp td:not(.num){min-width:150px}
+.cmp td.small{min-width:110px}

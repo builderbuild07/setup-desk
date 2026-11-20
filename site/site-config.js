@@ -26,7 +26,7 @@ window.SETUP_DESK = {
   adSlotMid: "",
 
   // 4. You. Shown in the byline and on the About, Privacy and Disclosure pages.
-  authorName: "Your Name",
+  authorName: "Tom",
   contactEmail: "you@example.com"
 
 };

@@ -15,6 +15,7 @@ site/                     ← everything Netlify publishes
   best-tv-for-gta-6/index.html
   gta-6-storage-guide/index.html
   gta-6-settings-checklist/index.html   ← interactive tick-boxes (localStorage)
+  gta-6-accessories/index.html          ← headsets, controllers, charging, soundbars
   gta-6-money-tracker/index.html        ← tracker table, rows added by hand
   privacy-policy/  affiliate-disclosure/  about/
   404.html  robots.txt
