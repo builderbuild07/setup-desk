@@ -14,7 +14,7 @@ window.SETUP_DESK = {
 
   // 1. Amazon Associates Australia tracking ID (also called a Store ID).
   //    Looks like: "yourname-22"
-  amazonTag: "PASTE-AMAZON-TAG-HERE",
+  amazonTag: "setupdesk-22",
 
   // 2. Google AdSense publisher ID.
   //    Looks like: "pub-1234567890123456"  (with or without "ca-" in front)
