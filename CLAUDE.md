@@ -60,6 +60,11 @@ The look is a clean tech review publication (think RTINGS, The Verge buying guid
 - Keep facts sourced. Performance numbers come from Digital Foundry's launch testing (18 Nov 2026). Mark unconfirmed details as "reportedly". Don't invent test results. The money tracker only shows methods the owner has timed in-game.
 - Don't quote Amazon prices (Amazon's rules ban stale prices). Link to "Check price on Amazon" instead.
 
+## Deploys and Git
+
+- Netlify free plan charges 15 credits per production deploy (300/month). Commit locally as you go, and only push once at the end of a session.
+- Domain and DNS settings (Netlify CLI/API, dashboard) don't need a deploy. Don't trigger builds or deploys for them.
+
 ## Monetisation rules
 
 - **One settings file:** `site/site-config.js` holds the Amazon tracking tag, the AdSense publisher ID, optional ad-slot IDs, author name and contact email. Never hard-code any of these anywhere else.

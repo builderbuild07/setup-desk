@@ -4,7 +4,7 @@
 //   - every amazon.com.au link gets ?tag=yourtag-22 written into the HTML
 //   - every page gets the AdSense verification meta tag and script
 //   - your name and email replace the placeholders
-//   - sitemap.xml, robots.txt and each page's og:url (link previews) use Netlify's site URL
+//   - sitemap.xml, robots.txt and each page's og:url (link previews) use siteUrl from site-config.js
 // It never fails the deploy: missing settings just print a warning.
 // You can also run it yourself with: node scripts/build.mjs
 import fs from 'node:fs';
@@ -52,8 +52,10 @@ function htmlFiles(dir) {
   });
 }
 
-// Netlify sets URL to your site's address (your own domain once you connect one).
-const base = (process.env.URL || '').replace(/\/$/, '');
+// The site's address: siteUrl from site-config.js, or Netlify's URL if that's empty.
+const siteUrl = /^https?:\/\/[^/\s]+\/?$/.test(String(cfg.siteUrl || '').trim()) ? cfg.siteUrl.trim() : '';
+const base = (siteUrl || process.env.URL || '').replace(/\/$/, '');
+console.log(`[setup-desk] Site URL: ${base || 'NOT SET'}`);
 
 let linkCount = 0;
 for (const file of htmlFiles(SITE)) {

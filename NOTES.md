@@ -76,13 +76,13 @@ These are things I couldn't fully verify, or that are your call:
 
 ## Next steps
 
-1. **Netlify:** if it isn't connected yet, go to app.netlify.com and choose **Add new site → Import an existing project → GitHub → setup-desk → Deploy**.
-   - The deploy log should say `Amazon tag: setupdesk-22` and `Tagged 16 Amazon links`.
-   - If it's already connected, the push just now redeployed it.
+1. **Netlify:** connected. The site is `setup-desk-1d4d` (`setup-desk-1d4d.netlify.app`), and it deploys from GitHub on every push.
+   - The deploy log should say `Amazon tag: setupdesk-22`, `Site URL: https://setupdesk.com.au` and `Tagged 16 Amazon links`.
+   - **Each production deploy costs 15 of your 300 monthly credits.** Commit locally and push once at the end of a session.
 2. **On your phone**, tap a "Check price" button on the live site. The Amazon address should end in `tag=setupdesk-22`.
 3. **Add your TikTok profile** under "Websites and mobile apps" in Associates Central before putting Amazon links on TikTok. Remember the 180-day / 3-sales window started when you signed up.
 4. **Photos:** replace the "YOUR PHOTO" boxes, starting with the home page and the TV page.
-5. **Buy a domain** and connect it in Netlify. You'll need it before applying for AdSense (see MONEY-SETUP.md).
+5. ~~Buy a domain~~: done. **https://setupdesk.com.au** (see the domain section below).
 6. **Add your first money tracker rows** once you've timed some methods.
 7. ~~Delete the old `index.html`~~: done on 21 November.
 
@@ -103,6 +103,19 @@ The page HTML in `site/` is the source of truth. Edit it directly and follow `CL
 - **Home page bundles:** every item links to its guide.
 - **Photo placeholders are hidden** on the live site until a real image replaces them (CSS rule at the bottom of style.css).
 - **New /go page:** a "link in bio" page for TikTok, noindex, in the sitemap.
+
+## Domain (set up 21 November 2026)
+
+- **setupdesk.com.au** is the primary domain. **www.setupdesk.com.au** redirects to it automatically.
+- **setupdesk.online** and **www.setupdesk.online** are domain aliases.
+  - The redirect rules in `netlify.toml` send them to https://setupdesk.com.au.
+  - Those rules only take effect after the **next deploy**. Until then, setupdesk.online shows the same site without redirecting.
+- **DNS is hosted by Netlify** (Netlify DNS zones for both domains). VentraIP is only the registrar, so the nameservers at VentraIP must be Netlify's:
+  - setupdesk.com.au: `dns1.p03.nsone.net`, `dns2.p03.nsone.net`, `dns3.p03.nsone.net`, `dns4.p03.nsone.net`
+  - setupdesk.online: `dns1.p04.nsone.net`, `dns2.p04.nsone.net`, `dns3.p04.nsone.net`, `dns4.p04.nsone.net`
+- **Any DNS records** you need later (e.g. Google site verification, email) go in Netlify under **Domains → the domain → DNS records**, not in VentraIP.
+- **The site's address** is `siteUrl` in `site/site-config.js`. The build uses it for link previews and the sitemap.
+- **HTTPS:** Netlify issues the Let's Encrypt certificate automatically once the nameservers have switched. Check it under **Domain management → HTTPS**.
 
 ## Still to do
 - **Money from TVs and consoles:** researched on 21 November, see RETAILER-AFFILIATES.md and below.

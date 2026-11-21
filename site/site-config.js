@@ -27,6 +27,10 @@ window.SETUP_DESK = {
 
   // 4. You. Shown in the byline and on the About, Privacy and Disclosure pages.
   authorName: "Tom",
-  contactEmail: "setupdesk.au@gmail.com"
+  contactEmail: "setupdesk.au@gmail.com",
+
+  // 5. The site's address, with https:// and no slash at the end.
+  //    Used for link previews (Open Graph) and the sitemap.
+  siteUrl: "https://setupdesk.com.au"
 
 };

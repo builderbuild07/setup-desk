@@ -5,7 +5,7 @@ How to start earning from Setup Desk, in order. You only ever paste things into 
 ## Checklist
 
 - [ ] Site is live on Netlify and auto-deploys from GitHub
-- [ ] Buy your own domain and connect it in Netlify (needed for AdSense, and looks better to Amazon)
+- [x] Buy your own domain and connect it in Netlify: done. The site is https://setupdesk.com.au (live once the VentraIP nameservers switch to Netlify)
 - [ ] Put your name and email in `site/site-config.js` (`authorName`, `contactEmail`)
 - [ ] Add your own photos where the "YOUR PHOTO" boxes are
 - [ ] Wait for steady traffic (see "When to sign up" below)
@@ -15,7 +15,7 @@ How to start earning from Setup Desk, in order. You only ever paste things into 
 - [ ] Get 3 qualifying sales within 180 days
 - [ ] Apply for Google AdSense
 - [ ] Paste your publisher ID into `adsensePublisherId`
-- [ ] Check `yoursite.com/ads.txt` shows your ID
+- [ ] Check `https://setupdesk.com.au/ads.txt` shows your ID
 - [ ] Turn on Auto ads, or create two ad units and paste their IDs into `adSlotTop` / `adSlotMid`
 - [ ] Set up the consent message for European visitors in AdSense
 
@@ -60,7 +60,7 @@ Before you apply, make sure:
 
 1. Go to **affiliate-program.amazon.com.au** and click **Sign up**. Use your normal Amazon account or create one.
 2. **Account information:** your name, address and phone number. Choose whether payments go to you personally or a business.
-3. **Website and mobile app list:** add your site address (e.g. `https://yourdomain.com.au`). **Also add your TikTok profile URL** if you'll ever put Amazon links in your TikTok bio, because Amazon only allows links on sites you've listed.
+3. **Website and mobile app list:** add your site address (`https://setupdesk.com.au`). **Also add your TikTok profile URL** if you'll ever put Amazon links in your TikTok bio, because Amazon only allows links on sites you've listed.
 4. **Profile:** pick your **preferred Store ID**. This becomes your tracking ID, something like `setupdesk-22`. Describe the site honestly: "Guides to setting up GTA 6 in Australia: consoles, TVs, storage and settings."
 5. Answer the questions about traffic and how you build links. Be honest. Small and new is fine.
 6. Enter your **payment and tax information** when asked. You can do this later, but you won't be paid until it's done.
@@ -116,7 +116,7 @@ It's fine to apply for AdSense before, after or at the same time as Amazon.
 ### How to apply
 
 1. Go to **adsense.google.com** and sign in with a Google account you'll keep long term.
-2. Enter your site address (e.g. `yourdomain.com.au`), choose **Australia**, and accept the terms.
+2. Enter your site address (`setupdesk.com.au`), choose **Australia**, and accept the terms.
 3. Fill in your **payment address**. Your name must match your bank account.
 4. AdSense now shows your account. Leave this tab open and do the next section first.
 
@@ -140,7 +140,7 @@ Commit and push. On the next deploy, Netlify automatically:
 
 ### Verify your site and request review
 
-1. After the deploy finishes, open `https://yourdomain.com.au/ads.txt` in a browser. It should show one line:
+1. After the deploy finishes, open `https://setupdesk.com.au/ads.txt` in a browser. It should show one line:
    `google.com, pub-1234567890123456, DIRECT, f08c47fec0942fa0`
 2. In AdSense, go to **Sites**, click your site, and choose a verification method. **"AdSense code snippet"**, **"ads.txt snippet"** and **"Meta tag"** all work, because the site already has all three. Click **Verify**.
 3. Tick the box saying you've placed the code, and click **Request review**.
@@ -167,7 +167,7 @@ Google requires a consent pop-up for visitors from Europe, the UK and Switzerlan
 
 ### How to check it's working
 
-- `yourdomain.com.au/ads.txt` shows your publisher ID
+- `https://setupdesk.com.au/ads.txt` shows your publisher ID
 - AdSense › **Sites** shows your site as **Ready**, and the ads.txt status is **Authorised** (this can take a few days to update)
 - On a guide page, the deploy log says `[setup-desk] AdSense ID: pub-…`
 - Open a guide page in a private tab. You should see blocks labelled "Advertisement". New sites can take a few hours to a couple of days before ads fill in.
@@ -180,5 +180,5 @@ Google requires a consent pop-up for visitors from Europe, the UK and Switzerlan
 | Links don't have `tag=` | Check the tag ends in `-22` and there are quote marks around it. Check the deploy finished. |
 | `ads.txt` still says "Placeholder" | The ID must look like `pub-` plus 16 digits. Check the deploy log for `AdSense ID: NOT SET`. |
 | Site broke after editing settings | You probably deleted a quote mark or comma. Compare with the example at the top of this file, or undo the commit on GitHub. |
-| AdSense says "Site down or unavailable" | Make sure you entered the exact domain the site lives on, with no `www` mismatch. |
+| AdSense says "Site down or unavailable" | Make sure you entered the exact domain the site lives on, with no `www` mismatch: `setupdesk.com.au`. |
 | Ads show blank space | Normal for the first day or two. Unfilled ad slots hide themselves. |
