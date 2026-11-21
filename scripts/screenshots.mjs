@@ -12,7 +12,7 @@ const PAGES = {
   home: '/', console: '/best-console-for-gta-6/', tv: '/best-tv-for-gta-6/',
   storage: '/gta-6-storage-guide/', settings: '/gta-6-settings-checklist/',
   accessories: '/gta-6-accessories/', tracker: '/gta-6-money-tracker/', privacy: '/privacy-policy/',
-  disclosure: '/affiliate-disclosure/', about: '/about/', notfound: '/404.html',
+  disclosure: '/affiliate-disclosure/', about: '/about/', go: '/go/', notfound: '/404.html',
 };
 const VIEWPORTS = {
   mobile: { viewport: { width: 390, height: 844 }, deviceScaleFactor: 2, isMobile: true, hasTouch: true },

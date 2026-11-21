@@ -61,6 +61,8 @@ The look is a clean tech review publication (think RTINGS, The Verge buying guid
 ## Monetisation rules
 
 - **One settings file:** `site/site-config.js` holds the Amazon tracking tag, the AdSense publisher ID, optional ad-slot IDs, author name and contact email. Never hard-code any of these anywhere else.
+- **Amazon AU doesn't stock everything** (checked 21 Nov 2026): no LG C6, Hisense U7S, TCL C7L/P7LS or Sony Bravia 8 II, and the PS5 Pro, Xbox Series X, Pulse Elite and Sonos Beam only have third-party sellers. 2TB PS5 SSDs are imported stock at well above local prices. For those, show `<span class="where">Not on Amazon AU…</span>` and name local stores in plain text instead of a button. Never send readers to a reseller listing above RRP or to search results full of unrelated items.
+- **Prefer direct product links** (`https://www.amazon.com.au/dp/ASIN`) to search links, and only for listings sold by Amazon AU or an Amazon overseas store (mark those "Ships from overseas").
 - **Product links:** always link to amazon.com.au, written plainly in the HTML as
   `<a class="buy" href="https://www.amazon.com.au/s?k=Product+Name" rel="sponsored nofollow noopener" target="_blank">Check price on Amazon</a>`.
   Never add `tag=` by hand. `assets/site.js` adds the tag in the browser and `scripts/build.mjs` writes it into the HTML on every Netlify build. Every Amazon link must have `rel="sponsored"`.

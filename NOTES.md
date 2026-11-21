@@ -87,3 +87,20 @@ The page HTML in `site/` is the source of truth. Edit it directly and follow `CL
 - The header, nav and footer repeat in every page.
 - Australian spelling, no hype words.
 - Say whose price it is and when it was checked.
+
+## What changed on 21 November 2026 (done by Claude in chat, not Claude Code)
+
+- **Checked every product against amazon.com.au.** Most recommended TVs and consoles aren't sold by Amazon AU, and the SSDs are imported stock at about two to three times local prices. Those buttons now say "Not on Amazon AU" and name local stores instead of sending readers to junk search results or reseller listings.
+- **Direct product links** (/dp/) for what Amazon AU does sell: GTA VI for PS5, LG 48" B6 OLED, LG 65" QNED86B, PowerA twin charger. Overseas-shipped items are marked: DualSense, Arctis Nova 3P.
+- **"Don't have the game yet?" box** with the GTA VI link at the bottom of the home page and every guide.
+- **TV page:** two new "On Amazon AU" rows (LG B6 48", LG QNED86B 65").
+- **Settings checklist:** the HDMI 2.1 step links a certified UGREEN cable.
+- **Home page bundles:** every item links to its guide.
+- **Photo placeholders are hidden** on the live site until a real image replaces them (CSS rule at the bottom of style.css).
+- **New /go page:** a "link in bio" page for TikTok, noindex, in the sitemap.
+
+## Still to do
+- **Money from TVs and consoles:** look into affiliate programs at JB Hi-Fi, The Good Guys and Harvey Norman. Amazon can't earn from those pages until it stocks them.
+- **Contact email** in site-config.js is still you@example.com.
+- **The Black Friday page** was skipped for now: too few of the recommended products are on Amazon AU to make it worthwhile.
+- **Old index.html** in the top folder can be deleted.

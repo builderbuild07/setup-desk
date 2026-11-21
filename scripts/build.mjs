@@ -18,7 +18,7 @@ const SITE = path.join(ROOT, 'site');
 // Pages in the sitemap (keep in step with the nav).
 const PAGES = [
   '/', '/best-console-for-gta-6/', '/best-tv-for-gta-6/', '/gta-6-storage-guide/',
-  '/gta-6-settings-checklist/', '/gta-6-accessories/', '/gta-6-money-tracker/', '/about/',
+  '/gta-6-settings-checklist/', '/gta-6-accessories/', '/gta-6-money-tracker/', '/go/', '/about/',
   '/affiliate-disclosure/', '/privacy-policy/',
 ];
 
