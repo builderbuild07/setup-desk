@@ -1,13 +1,18 @@
 # Setup Desk: where we're up to
 
-_Last updated 20 November 2026_
+_Last updated 21 November 2026_
 
 ## Status
 
 - **Code:** everything is on GitHub at `builderbuild07/setup-desk` (branch `main`).
-- **Amazon:** your tag `setupdesk-22` is set in `site/site-config.js`. The build tags all 27 Amazon links with it.
+- **Amazon:** your tag `setupdesk-22` is set in `site/site-config.js`. Since the 21 November clean-up there are 16 Amazon links, and the build tags all of them.
 - **Byline:** set to **Tom** on every page.
-- **Not done yet:** Netlify deploy (if you haven't connected it), contact email, photos, AdSense.
+- **Contact email:** `setupdesk.au@gmail.com`. It shows on the About, Privacy and Disclosure pages.
+- **Not done yet:**
+  - Netlify deploy, if you haven't connected it
+  - photos
+  - AdSense
+  - a retailer affiliate program for the TVs and consoles (see RETAILER-AFFILIATES.md)
 
 ## What changed on 20 November 2026
 
@@ -67,19 +72,19 @@ These are things I couldn't fully verify, or that are your call:
 5. **Amazon privacy link** on the Privacy Policy page: Amazon blocks automated checks, so click it once and make sure it opens Amazon Australia's privacy notice.
 6. **Digital Foundry figures** came from news reports of their analysis, not the video itself. One report says DF only tested pre-release footage on base PS5. Watch the DF video and correct anything that's off.
 7. **The "How we test" method** on the Money Tracker page is a method I wrote for you. Make sure it's how you'll actually test.
-8. **Contact email** is still `you@example.com`. Set `contactEmail` in `site/site-config.js`.
+8. ~~Contact email~~: done on 21 November.
 
 ## Next steps
 
 1. **Netlify:** if it isn't connected yet, go to app.netlify.com and choose **Add new site → Import an existing project → GitHub → setup-desk → Deploy**.
-   - The deploy log should say `Amazon tag: setupdesk-22` and `Tagged 27 Amazon links`.
+   - The deploy log should say `Amazon tag: setupdesk-22` and `Tagged 16 Amazon links`.
    - If it's already connected, the push just now redeployed it.
 2. **On your phone**, tap a "Check price" button on the live site. The Amazon address should end in `tag=setupdesk-22`.
 3. **Add your TikTok profile** under "Websites and mobile apps" in Associates Central before putting Amazon links on TikTok. Remember the 180-day / 3-sales window started when you signed up.
 4. **Photos:** replace the "YOUR PHOTO" boxes, starting with the home page and the TV page.
 5. **Buy a domain** and connect it in Netlify. You'll need it before applying for AdSense (see MONEY-SETUP.md).
 6. **Add your first money tracker rows** once you've timed some methods.
-7. **Delete the old `index.html`** in the top folder. It's the old design and isn't published.
+7. ~~Delete the old `index.html`~~: done on 21 November.
 
 ## How to make content changes later
 
@@ -100,7 +105,45 @@ The page HTML in `site/` is the source of truth. Edit it directly and follow `CL
 - **New /go page:** a "link in bio" page for TikTok, noindex, in the sitemap.
 
 ## Still to do
-- **Money from TVs and consoles:** look into affiliate programs at JB Hi-Fi, The Good Guys and Harvey Norman. Amazon can't earn from those pages until it stocks them.
-- **Contact email** in site-config.js is still you@example.com.
+- **Money from TVs and consoles:** researched on 21 November, see RETAILER-AFFILIATES.md and below.
 - **The Black Friday page** was skipped for now: too few of the recommended products are on Amazon AU to make it worthwhile.
-- **Old index.html** in the top folder can be deleted.
+
+## What changed later on 21 November 2026 (Claude Code)
+
+- **Verdict boxes:** each product name on the Console, TV and Storage pages now jumps to its review further down.
+  - On the Storage page there are no reviews, so the names jump to the SSD table rows, which show where to buy.
+  - The USB "Skip" jumps to its FAQ.
+  - The TV page's "cheap edge-lit TVs" Skip jumps to its row in the comparison table.
+- **"What I'd buy" boxes:** each one now ends with a "See where to buy →" link:
+  - Console → the PS5 Pro review
+  - TV → the LG C6 review
+  - Storage → the WD_BLACK row
+  - Accessories → the DualSense review
+  - The Settings page's "What I'd do first" box isn't about a product, so it has no link.
+- **Link previews:** every page has Open Graph and Twitter card tags (title, description, URL), so links on TikTok, Instagram and Messenger show a proper title and summary.
+  - The URL is filled in by the Netlify build from your site address, so it updates by itself when you connect a domain.
+  - There's no preview image yet.
+- **Contact email** set to `setupdesk.au@gmail.com`.
+- **Old `index.html`** in the top folder is deleted.
+- **RETAILER-AFFILIATES.md:** research on JB Hi-Fi, The Good Guys, Harvey Norman, Bing Lee and Mwave. Short version:
+  - **The Good Guys:** has a program on Partnerize at 3%, but it pays **nothing on PlayStation 5 or Xbox**. It does pay on TVs, soundbars and headsets.
+  - **Bing Lee:** probably on Commission Factory at up to about 2.5%. Unconfirmed.
+  - **Mwave:** has a program and lets bloggers and creators apply, but publishes no rate.
+  - **JB Hi-Fi and Harvey Norman:** no direct program found.
+- **Checked:**
+  - Every page was screenshotted on mobile (390px) and desktop.
+  - No page scrolls sideways.
+  - All 16 Amazon links have `rel="sponsored"`.
+  - Every in-page link lands on its target.
+  - The new links are at least 44px tall for tapping.
+  - The Amazon links you added on 21 November are unchanged.
+
+### Check these yourself
+1. **Link previews:** after the deploy, paste a page link into a Messenger chat to yourself and check the title and summary look right.
+   - Facebook's [Sharing Debugger](https://developers.facebook.com/tools/debug/) shows what Messenger and Instagram see, and can refresh a cached preview.
+   - A **preview image** (1200×630, e.g. your setup photo) would make shared links stand out. Add it when you have a photo.
+2. **The Good Guys' exclusions:** I only partly read their affiliate page directly. Confirm on [thegoodguys.com.au/affiliates](https://www.thegoodguys.com.au/affiliates) that PlayStation 5 and Xbox are excluded and the rate is 3%.
+3. **Before adding any retailer affiliate links:**
+   - Update the Privacy Policy and Affiliate Disclosure to name the new network.
+   - Give the links `rel="sponsored"`.
+4. **The email inbox:** make sure `setupdesk.au@gmail.com` exists and you check it. Corrections and privacy requests will go there.
