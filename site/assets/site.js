@@ -114,11 +114,86 @@
     update();
   }
 
+  // ---- "Don't have GTA 6 yet?" bar (pages that include [data-gta-bar]) ----
+  // Shows after a third of the page, hides while the page's own game box (or a
+  // cookie notice) is on screen, and stays closed for 7 days once dismissed.
+  function setupGtaBar() {
+    var bar = document.querySelector('[data-gta-bar]');
+    if (!bar) return;
+    var KEY = 'setupdesk-gtabar-closed';
+    var WEEK = 7 * 24 * 60 * 60 * 1000;
+    try {
+      var closedAt = parseInt(localStorage.getItem(KEY) || '0', 10);
+      if (closedAt && Date.now() - closedAt < WEEK) { bar.parentNode.removeChild(bar); return; }
+    } catch (e) {}
+
+    var shown = false, blockers = 0, hideTimer = null;
+    var NOTICE = '.cookie-notice, [data-cookie-notice], .fc-consent-root';
+
+    function noticeOnScreen() {
+      var n = document.querySelector(NOTICE);
+      return !!(n && n.offsetWidth && n.offsetHeight);
+    }
+    function wanted() {
+      var max = document.documentElement.scrollHeight - window.innerHeight;
+      return max > 0 && window.scrollY / max >= 0.33 && blockers === 0 && !noticeOnScreen();
+    }
+    function show() {
+      if (shown) return;
+      shown = true;
+      clearTimeout(hideTimer);
+      bar.hidden = false;
+      document.body.classList.add('has-gta-bar');
+      requestAnimationFrame(function () { requestAnimationFrame(function () { bar.classList.add('is-shown'); }); });
+    }
+    function hide() {
+      if (!shown) return;
+      shown = false;
+      bar.classList.remove('is-shown');
+      hideTimer = setTimeout(function () { if (!shown) bar.hidden = true; }, 220);
+    }
+    function update() { if (wanted()) show(); else hide(); }
+
+    // Don't double up with the "Don't have the game yet?" box or cover the footer.
+    if ('IntersectionObserver' in window) {
+      var seen = [];
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          var i = seen.indexOf(en.target);
+          if (en.isIntersecting && i === -1) seen.push(en.target);
+          if (!en.isIntersecting && i !== -1) seen.splice(i, 1);
+        });
+        blockers = seen.length;
+        update();
+      });
+      [].forEach.call(document.querySelectorAll('.game-box, .site-footer'), function (el) { io.observe(el); });
+    }
+
+    var ticking = false;
+    function onScroll() {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(function () { ticking = false; update(); });
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+
+    bar.querySelector('.gta-bar__close').addEventListener('click', function () {
+      try { localStorage.setItem(KEY, String(Date.now())); } catch (e) {}
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+      hide();
+      document.body.classList.remove('has-gta-bar');
+    });
+    update();
+  }
+
   function init() {
     tagAmazonLinks();
     fillPeople();
     setupAds();
     setupChecklist();
+    setupGtaBar();
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
   else init();
