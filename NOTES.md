@@ -5,7 +5,7 @@ _Last updated 21 November 2026_
 ## Status
 
 - **Code:** everything is on GitHub at `builderbuild07/setup-desk` (branch `main`).
-- **Amazon:** your tag `setupdesk-22` is set in `site/site-config.js`. Since the 21 November clean-up there are 16 Amazon links, and the build tags all of them.
+- **Amazon:** your tag `setupdesk-22` is set in `site/site-config.js`. There are 33 Amazon links (7 products, all checked by hand on 21 November), and the build tags all of them.
 - **Byline:** set to **Tom** on every page.
 - **Contact email:** `setupdesk.au@gmail.com`. It shows on the About, Privacy and Disclosure pages.
 - **Not done yet:**
@@ -77,7 +77,7 @@ These are things I couldn't fully verify, or that are your call:
 ## Next steps
 
 1. **Netlify:** connected. The site is `setup-desk-1d4d` (`setup-desk-1d4d.netlify.app`), and it deploys from GitHub on every push.
-   - The deploy log should say `Amazon tag: setupdesk-22`, `Site URL: https://setupdesk.com.au` and `Tagged 16 Amazon links`.
+   - The deploy log should say `Amazon tag: setupdesk-22`, `Site URL: https://setupdesk.com.au` and `Tagged 33 Amazon links`.
    - **Each production deploy costs 15 of your 300 monthly credits.** Commit locally and push once at the end of a session.
 2. **On your phone**, tap a "Check price" button on the live site. The Amazon address should end in `tag=setupdesk-22`.
 3. **Add your TikTok profile** under "Websites and mobile apps" in Associates Central before putting Amazon links on TikTok. Remember the 180-day / 3-sales window started when you signed up.
@@ -117,6 +117,51 @@ The page HTML in `site/` is the source of truth. Edit it directly and follow `CL
 - **The site's address** is `siteUrl` in `site/site-config.js`. The build uses it for link previews and the sitemap.
 - **HTTPS:** Netlify issues the Let's Encrypt certificate automatically once the nameservers have switched. Check it under **Domain management → HTTPS**.
 
+## Amazon nudges (added 21 November 2026, Claude Code)
+
+None of these add new Amazon products. They reuse the 7 links checked by hand on 21 November: GTA VI, LG B6 48", LG QNED86B 65", DualSense, PowerA dock, Arctis Nova 3P and the UGREEN HDMI cable.
+
+- **"Don't have GTA 6 yet?" bar:** a slim black bar at the bottom of the screen on the home page and the six guides. It isn't on Privacy, Disclosure, About, 404 or /go.
+  - It appears after the reader scrolls about a third of the page.
+  - It steps aside while the page's own "Don't have the game yet?" box, the footer or a cookie notice is on screen.
+  - It's 52px tall on a phone, and the ✕ is 44×44px.
+  - Once closed, it stays hidden for 7 days on that device.
+  - It slides in, with no animation for people who turn motion off.
+  - The markup is in each page's HTML just after `</main>`. The behaviour is in `setupGtaBar()` in `assets/site.js`.
+- **"Next step" box** at the end of each guide, above the game box. Each one has two or three links to related guides, plus one product:
+
+  | Guide | Product |
+  |---|---|
+  | Console | PowerA dock |
+  | TV | UGREEN cable |
+  | Storage | UGREEN cable |
+  | Settings | Arctis Nova 3P |
+  | Accessories | PowerA dock |
+  | Money | DualSense |
+
+  Overseas items say "Ships from overseas".
+- **Inline links** at the first natural mention in body text:
+  - Home: "Physical copies" → GTA VI
+  - Console: "game box" → GTA VI
+  - Storage: "physical copies" → GTA VI
+  - Accessories: "standard DualSense" → DualSense
+- **Left out on purpose:**
+  - LG B6 on the TV comparison table, because that row says "Buy the C6".
+  - Mentions that already sit next to their own Amazon button.
+- **Console page:** each of the four reviews ends with "At 30fps the TV matters as much as the console. See which TV to pair it with →".
+- **Checked:**
+  - Every page was screenshotted on mobile and desktop.
+  - No page scrolls sideways.
+  - All 33 Amazon links have `rel="sponsored"`.
+  - The bar hides at the end of every page, so it never covers the game box, footer or last buttons.
+  - The page gets 64px of extra bottom padding while the bar is showing.
+  - The 7-day close works, and the site still works if the browser blocks storage.
+
+### Check these yourself
+1. **Is the bar too much?** Scroll a guide on your phone. If it feels pushy, the trigger point is `0.33` in `setupGtaBar()`; raise it to show the bar later.
+2. **If you add a cookie banner later** (e.g. Google's consent message for AdSense), the bar already hides for `.fc-consent-root`, `.cookie-notice` and `[data-cookie-notice]`. Check it on your phone.
+3. **Amazon reports:** after a few weeks, compare clicks in Associates Central with the bar on and off. Close it on your phone to see the site without it.
+
 ## Still to do
 - **Money from TVs and consoles:** researched on 21 November, see RETAILER-AFFILIATES.md and below.
 - **The Black Friday page** was skipped for now: too few of the recommended products are on Amazon AU to make it worthwhile.
@@ -146,7 +191,7 @@ The page HTML in `site/` is the source of truth. Edit it directly and follow `CL
 - **Checked:**
   - Every page was screenshotted on mobile (390px) and desktop.
   - No page scrolls sideways.
-  - All 16 Amazon links have `rel="sponsored"`.
+  - All 16 Amazon links at the time had `rel="sponsored"`.
   - Every in-page link lands on its target.
   - The new links are at least 44px tall for tapping.
   - The Amazon links you added on 21 November are unchanged.
