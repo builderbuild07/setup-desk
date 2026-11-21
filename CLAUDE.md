@@ -23,12 +23,14 @@ site/                     ← everything Netlify publishes
 scripts/build.mjs         ← Netlify build step (see "Monetisation")
 scripts/screenshots.mjs   ← Playwright: screenshots every page, mobile + desktop
 netlify.toml
-index.html                ← the OLD single-page design (git-ignored, not published). Safe to delete.
 MONEY-SETUP.md            ← plain-English guide for the owner: Amazon + AdSense signup
+RETAILER-AFFILIATES.md    ← research on JB Hi-Fi / Good Guys / Harvey Norman / Bing Lee / Mwave programs
 ```
 
 - Header, nav and footer markup is repeated in every page. **When you change one, change all of them** (including 404.html).
 - Use root-relative URLs (`/assets/style.css`, `/about/`). New pages go in their own folder as `index.html`, and need adding to the nav/footer in every page and to the `PAGES` list in `scripts/build.mjs` (sitemap) and `scripts/screenshots.mjs`.
+- **Link previews:** every page has Open Graph and Twitter card tags under the meta description (`og:title`, `og:description`, `og:url`, `twitter:card` "summary", etc.). Copy them into new pages. Write `og:url` as a root-relative path (`/page/`); `scripts/build.mjs` turns it into the full address from Netlify's `URL`. No `og:image` until the owner provides one.
+- **In-page links:** product names in "The verdict" boxes link to that product's review section (or table row) further down, and each "What I'd buy" box ends with a "See where to buy →" link. Give the targets ids (`review-…`, `ssd-…`).
 - Preview locally with `npx --yes serve site -l 4173`, not by opening files directly (root-relative links need a server).
 
 ## Design rules

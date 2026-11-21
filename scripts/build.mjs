@@ -4,7 +4,7 @@
 //   - every amazon.com.au link gets ?tag=yourtag-22 written into the HTML
 //   - every page gets the AdSense verification meta tag and script
 //   - your name and email replace the placeholders
-//   - sitemap.xml and robots.txt are written using Netlify's site URL
+//   - sitemap.xml, robots.txt and each page's og:url (link previews) use Netlify's site URL
 // It never fails the deploy: missing settings just print a warning.
 // You can also run it yourself with: node scripts/build.mjs
 import fs from 'node:fs';
@@ -52,6 +52,9 @@ function htmlFiles(dir) {
   });
 }
 
+// Netlify sets URL to your site's address (your own domain once you connect one).
+const base = (process.env.URL || '').replace(/\/$/, '');
+
 let linkCount = 0;
 for (const file of htmlFiles(SITE)) {
   let html = fs.readFileSync(file, 'utf8');
@@ -75,12 +78,14 @@ for (const file of htmlFiles(SITE)) {
   if (email) html = html.replace(/<a data-email href="mailto:[^"]*">[^<]*<\/a>/g,
     `<a data-email href="mailto:${esc(email)}">${esc(email)}</a>`);
 
+  // Link previews need a full address: og:url="/page/" becomes "https://your-site/page/".
+  if (base) html = html.replace(/(<meta property="og:url" content=")(\/[^"]*)"/g, `$1${base}$2"`);
+
   fs.writeFileSync(file, html);
 }
 if (tag) console.log(`[setup-desk] Tagged ${linkCount} Amazon links.`);
 
-// ---- sitemap.xml + robots.txt (Netlify sets URL to your site's address) ----
-const base = (process.env.URL || '').replace(/\/$/, '');
+// ---- sitemap.xml + robots.txt ----
 let robots = 'User-agent: *\nAllow: /\n';
 if (base) {
   const today = new Date().toISOString().slice(0, 10);

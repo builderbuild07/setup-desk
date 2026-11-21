@@ -348,3 +348,11 @@ td .where{margin:0;font-weight:600;font-size:.85rem;white-space:nowrap}
 .go-links a::after{content:"→";font-weight:400}
 .go-links a:hover{background:var(--ink);color:var(--paper)}
 .go-links .go-links__main{background:var(--ink);color:var(--paper)}
+
+/* Added 21 Nov 2026 (Claude Code): in-page links from verdict and "What I'd buy" boxes */
+[id]{scroll-margin-top:16px}
+tr[id]{scroll-margin-top:72px} /* keep the table header row in view */
+.verdict-box a.vb-name{color:var(--ink);text-decoration:underline;text-decoration-color:var(--rule);text-decoration-thickness:1px;text-underline-offset:4px;padding:11px 0;margin:-11px 0;justify-self:start}
+.verdict-box a.vb-name:hover{color:var(--accent);text-decoration-color:var(--accent)}
+.wib__more{margin:-4px 0 0;font-size:.95rem;font-weight:600}
+.wib__more a{display:inline-flex;align-items:center;min-height:44px}

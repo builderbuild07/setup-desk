@@ -27,6 +27,6 @@ window.SETUP_DESK = {
 
   // 4. You. Shown in the byline and on the About, Privacy and Disclosure pages.
   authorName: "Tom",
-  contactEmail: "you@example.com"
+  contactEmail: "setupdesk.au@gmail.com"
 
 };
