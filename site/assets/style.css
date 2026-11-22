@@ -277,7 +277,7 @@ td .buy{min-height:40px;padding:0 12px;font-size:.85rem;white-space:nowrap}
 /* Grid children must be allowed to shrink, or wide tables push the page wider than the phone. */
 .section > .wrap > *, .split > *, .front-top .wrap > *, .review > *{min-width:0}
 /* Home: on phones show quick answers before the big photo. */
-.front-top .wrap{grid-template-areas:"lead" "answers" "photo"}
+.front-top .wrap{grid-template-areas:"lead" "photo" "answers"}
 .front-lead{grid-area:lead}
 .front-answers{grid-area:answers}
 .front-photo{grid-area:photo}
@@ -386,3 +386,21 @@ body.has-gta-bar{padding-bottom:64px}
 .next-step__note{font-size:.85rem;color:var(--ink-3,#777)}
 .review__next{margin-top:10px;font-size:.95rem}
 .review__next a{font-weight:600;display:inline-flex;align-items:center;min-height:44px}
+
+/* Added 22 Nov 2026: Rockstar screenshots and "Want it from Amazon?" boxes */
+.stack{display:grid;gap:18px}
+.shot{margin:0}
+.shot img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;background:var(--paper-2)}
+.shot figcaption{font:500 .72rem/1.4 var(--mono);letter-spacing:.04em;color:var(--ink-3)}
+
+.amz-box{border-top:2px solid var(--ink);border-bottom:1px solid var(--rule);padding:14px 0 4px}
+.amz-box__title{font:600 .75rem/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin:0}
+.amz-box__intro{font-size:.92rem;color:var(--ink-2);margin:6px 0 0;max-width:62ch}
+.amz-box__list{list-style:none;margin:6px 0 0;padding:0}
+.amz-box__list li{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 16px;padding:12px 0;border-top:1px solid var(--rule)}
+.amz-box__list li:first-child{border-top:0}
+.amz-box__item{flex:1 1 260px;min-width:0}
+.amz-box__name{font:600 1.02rem/1.3 var(--serif);margin:0}
+.amz-box__who{font-size:.9rem;color:var(--ink-2);margin:2px 0 0}
+.amz-box__note{color:var(--ink-3);white-space:nowrap}
+.amz-box .buy{min-height:44px;font-size:.9rem}
