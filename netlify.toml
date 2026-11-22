@@ -43,3 +43,16 @@
   to = "https://setupdesk.com.au/:splat"
   status = 301
   force = true
+
+# The money tracker page was removed on 22 November 2026. Send old links to the home page.
+[[redirects]]
+  from = "/gta-6-money-tracker"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/gta-6-money-tracker/*"
+  to = "/"
+  status = 301
+  force = true

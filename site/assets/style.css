@@ -240,8 +240,6 @@ td .buy{min-height:40px;padding:0 12px;font-size:.85rem;white-space:nowrap}
 .check__d b{font-weight:500;color:var(--ink)}
 .check input:checked ~ span .check__t{color:var(--ink-3);text-decoration:line-through;text-decoration-color:var(--ink-3)}
 
-/* ---------- Tracker ---------- */
-.tracker td.empty{color:var(--ink-3);font-style:italic;padding:28px 14px;text-align:center}
 
 /* ---------- Legal / long-form ---------- */
 .longform{max-width:720px;margin:0 auto;display:grid;gap:16px}
@@ -404,3 +402,6 @@ body.has-gta-bar{padding-bottom:64px}
 .amz-box__who{font-size:.9rem;color:var(--ink-2);margin:2px 0 0}
 .amz-box__note{color:var(--ink-3);white-space:nowrap}
 .amz-box .buy{min-height:44px;font-size:.9rem}
+
+/* 22 Nov 2026: five nav items fit a 390px phone without scrolling */
+@media (max-width:440px){.sitenav ul{gap:2px}.sitenav a{padding:0 7px}.sitenav li:last-child a{padding-right:0}}

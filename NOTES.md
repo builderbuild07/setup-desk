@@ -2,10 +2,25 @@
 
 _Last updated 22 November 2026_
 
+## Money tracker: removed (22 November 2026)
+
+The GTA 6 money tracker is gone, at your request. **Don't bring it back.** CLAUDE.md says the same, so future sessions won't re-add it.
+
+- **Removed:**
+  - the page itself (`site/gta-6-money-tracker/`)
+  - its "Money" item in the nav and footer on every page
+  - its entries on the home page, the /go page and the 404 page
+  - the "money tracker" lines on the home and About pages
+  - its sitemap and screenshot-script entries
+  - the tracker table CSS
+- **Old links:** `/gta-6-money-tracker/` 301-redirects to the home page (`netlify.toml`), so they still work.
+- **The Rockstar "money" screenshot** isn't used anywhere. Its web versions are deleted, and the original stays only in your local `photos/` folder.
+- **Nav:** it now has five items (Consoles, TVs, Storage, Settings, Accessories). The spacing was tightened so all five fit on a 390px phone without swiping.
+
 ## Status
 
 - **Code:** everything is on GitHub at `builderbuild07/setup-desk` (branch `main`).
-- **Amazon:** your tag `setupdesk-22` is set in `site/site-config.js`. There are 38 Amazon links (still the same 7 products, all checked by hand on 21 November), and the build tags all of them.
+- **Amazon:** your tag `setupdesk-22` is set in `site/site-config.js`. There are 35 Amazon links (still the same 7 products, all checked by hand on 21 November), and the build tags all of them.
 - **Byline:** set to **Tom** on every page.
 - **Contact email:** `setupdesk.au@gmail.com`. It shows on the About, Privacy and Disclosure pages.
 - **Live at:** https://setupdesk.com.au
@@ -71,19 +86,19 @@ These are things I couldn't fully verify, or that are your call:
 4. **DualSense Edge price:** $329.95 is Sony's AU RRP after its January 2025 cut. One 2026 source said $319. Check Sony's store.
 5. **Amazon privacy link** on the Privacy Policy page: Amazon blocks automated checks, so click it once and make sure it opens Amazon Australia's privacy notice.
 6. **Digital Foundry figures** came from news reports of their analysis, not the video itself. One report says DF only tested pre-release footage on base PS5. Watch the DF video and correct anything that's off.
-7. **The "How we test" method** on the Money Tracker page is a method I wrote for you. Make sure it's how you'll actually test.
+7. ~~The "How we test" method on the Money Tracker page~~: the tracker was removed on 22 November.
 8. ~~Contact email~~: done on 21 November.
 
 ## Next steps
 
 1. **Netlify:** connected. The site is `setup-desk-1d4d` (`setup-desk-1d4d.netlify.app`), and it deploys from GitHub on every push.
-   - The deploy log should say `Amazon tag: setupdesk-22`, `Site URL: https://setupdesk.com.au` and `Tagged 38 Amazon links`.
+   - The deploy log should say `Amazon tag: setupdesk-22`, `Site URL: https://setupdesk.com.au` and `Tagged 35 Amazon links`.
    - **Each production deploy costs 15 of your 300 monthly credits.** Commit locally and push once at the end of a session.
 2. **On your phone**, tap a "Check price" button on the live site. The Amazon address should end in `tag=setupdesk-22`.
 3. **Add your TikTok profile** under "Websites and mobile apps" in Associates Central before putting Amazon links on TikTok. Remember the 180-day / 3-sales window started when you signed up.
 4. **Photos:** replace the "YOUR PHOTO" boxes, starting with the home page and the TV page.
 5. ~~Buy a domain~~: done. **https://setupdesk.com.au** (see the domain section below).
-6. **Add your first money tracker rows** once you've timed some methods.
+6. ~~Money tracker rows~~: the tracker was removed on 22 November.
 7. ~~Delete the old `index.html`~~: done on 21 November.
 
 ## How to make content changes later

@@ -1,6 +1,8 @@
 # Setup Desk: project rules
 
-Setup Desk is an Australian affiliate site: a GTA 6 setup guide covering consoles, TVs, storage and settings, plus a money-making tracker. It's plain static HTML/CSS/JS with no framework, deployed by Netlify from the `site/` folder.
+Setup Desk is an Australian affiliate site: a GTA 6 setup guide covering consoles, TVs, storage, settings and accessories. It's plain static HTML/CSS/JS with no framework, deployed by Netlify from the `site/` folder.
+
+**No money tracker.** The GTA 6 money tracker page was removed on 22 November 2026 at the owner's request. Don't recreate it, link to it, or add money-making content or a "Money" nav item. `/gta-6-money-tracker/` 301-redirects to the home page (`netlify.toml`); keep that redirect. Don't use `photos/rockstar-money.jpg`.
 
 Follow every rule below in every session. If a request conflicts with a rule, point out the conflict before going ahead.
 
@@ -16,10 +18,10 @@ site/                     ← everything Netlify publishes
   gta-6-storage-guide/index.html
   gta-6-settings-checklist/index.html   ← interactive tick-boxes (localStorage)
   gta-6-accessories/index.html          ← headsets, controllers, charging, soundbars
-  gta-6-money-tracker/index.html        ← tracker table, rows added by hand
   privacy-policy/  affiliate-disclosure/  about/
   404.html  robots.txt
   assets/style.css  assets/site.js  assets/favicon.svg
+  assets/img/             ← Rockstar screenshots, WebP at 800/1200/1600 wide (originals in photos/, git-ignored)
 scripts/build.mjs         ← Netlify build step (see "Monetisation")
 scripts/screenshots.mjs   ← Playwright: screenshots every page, mobile + desktop
 netlify.toml
@@ -59,7 +61,7 @@ The look is a clean tech review publication (think RTINGS, The Verge buying guid
 - **Australian spelling** (colour, optimise, favourite, organise, metre, centre) and **AUD prices** (`$1,399.95`). Say whose price it is (e.g. "Sony AU RRP") and when it was checked.
 - Never use hype words: elevate, ultimate, game-changer, unleash, seamless, next-level, supercharge, must-have, epic, insane, revolutionary, "dive in", "look no further".
 - No emoji. No exclamation marks in body copy.
-- Keep facts sourced. Performance numbers come from Digital Foundry's launch testing (18 Nov 2026). Mark unconfirmed details as "reportedly". Don't invent test results. The money tracker only shows methods the owner has timed in-game.
+- Keep facts sourced. Performance numbers come from Digital Foundry's launch testing (18 Nov 2026). Mark unconfirmed details as "reportedly". Don't invent test results.
 - Don't quote Amazon prices (Amazon's rules ban stale prices). Link to "Check price on Amazon" instead.
 
 ## Deploys and Git

@@ -11,7 +11,7 @@ const BASE = (process.argv[3] || 'http://localhost:4173').replace(/\/$/, '');
 const PAGES = {
   home: '/', console: '/best-console-for-gta-6/', tv: '/best-tv-for-gta-6/',
   storage: '/gta-6-storage-guide/', settings: '/gta-6-settings-checklist/',
-  accessories: '/gta-6-accessories/', tracker: '/gta-6-money-tracker/', privacy: '/privacy-policy/',
+  accessories: '/gta-6-accessories/', privacy: '/privacy-policy/',
   disclosure: '/affiliate-disclosure/', about: '/about/', go: '/go/', notfound: '/404.html',
 };
 const VIEWPORTS = {
