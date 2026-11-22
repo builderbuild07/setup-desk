@@ -29,7 +29,9 @@ RETAILER-AFFILIATES.md    ← research on JB Hi-Fi / Good Guys / Harvey Norman /
 
 - Header, nav and footer markup is repeated in every page. **When you change one, change all of them** (including 404.html).
 - Use root-relative URLs (`/assets/style.css`, `/about/`). New pages go in their own folder as `index.html`, and need adding to the nav/footer in every page and to the `PAGES` list in `scripts/build.mjs` (sitemap) and `scripts/screenshots.mjs`.
-- **Link previews:** every page has Open Graph and Twitter card tags under the meta description (`og:title`, `og:description`, `og:url`, `twitter:card` "summary", etc.). Copy them into new pages. Write `og:url` as a root-relative path (`/page/`); `scripts/build.mjs` turns it into the full address from Netlify's `URL`. No `og:image` until the owner provides one.
+- **Domain:** the site lives at **https://setupdesk.com.au** (also `siteUrl` in `site-config.js`). Never link to the netlify.app address.
+- **Link previews and canonical:** every page (except 404) has `<link rel="canonical" href="https://setupdesk.com.au/page/">` plus Open Graph and Twitter card tags under the meta description (`og:title`, `og:description`, `og:url`, `twitter:card` "summary", etc.). Copy them into new pages with the full https://setupdesk.com.au address. `scripts/build.mjs` fixes any left as `/page/`. No `og:image` until the owner provides one.
+- **Sitemap:** `PAGES` in `scripts/build.mjs`. Leave out noindex pages (`/go/`).
 - **In-page links:** product names in "The verdict" boxes link to that product's review section (or table row) further down, and each "What I'd buy" box ends with a "See where to buy →" link. Give the targets ids (`review-…`, `ssd-…`).
 - Preview locally with `npx --yes serve site -l 4173`, not by opening files directly (root-relative links need a server).
 

@@ -18,7 +18,7 @@ const SITE = path.join(ROOT, 'site');
 // Pages in the sitemap (keep in step with the nav).
 const PAGES = [
   '/', '/best-console-for-gta-6/', '/best-tv-for-gta-6/', '/gta-6-storage-guide/',
-  '/gta-6-settings-checklist/', '/gta-6-accessories/', '/gta-6-money-tracker/', '/go/', '/about/',
+  '/gta-6-settings-checklist/', '/gta-6-accessories/', '/gta-6-money-tracker/', '/about/', // not /go/: it's noindex
   '/affiliate-disclosure/', '/privacy-policy/',
 ];
 
@@ -80,8 +80,8 @@ for (const file of htmlFiles(SITE)) {
   if (email) html = html.replace(/<a data-email href="mailto:[^"]*">[^<]*<\/a>/g,
     `<a data-email href="mailto:${esc(email)}">${esc(email)}</a>`);
 
-  // Link previews need a full address: og:url="/page/" becomes "https://your-site/page/".
-  if (base) html = html.replace(/(<meta property="og:url" content=")(\/[^"]*)"/g, `$1${base}$2"`);
+  // Pages normally have full addresses already; this fixes any og:url or canonical left as "/page/".
+  if (base) html = html.replace(/(<meta property="og:url" content="|<link rel="canonical" href=")(\/[^"]*)"/g, `$1${base}$2"`);
 
   fs.writeFileSync(file, html);
 }

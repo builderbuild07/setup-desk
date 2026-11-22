@@ -5,3 +5,6 @@ screenshots/
 Thumbs.db
 # Old single-page design, kept locally for reference only
 /index.html
+
+# Full-size original photos (web versions live in site/assets/img)
+/photos/
