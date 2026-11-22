@@ -1,16 +1,16 @@
 # Setup Desk: where we're up to
 
-_Last updated 21 November 2026_
+_Last updated 22 November 2026_
 
 ## Status
 
 - **Code:** everything is on GitHub at `builderbuild07/setup-desk` (branch `main`).
-- **Amazon:** your tag `setupdesk-22` is set in `site/site-config.js`. There are 33 Amazon links (7 products, all checked by hand on 21 November), and the build tags all of them.
+- **Amazon:** your tag `setupdesk-22` is set in `site/site-config.js`. There are 38 Amazon links (still the same 7 products, all checked by hand on 21 November), and the build tags all of them.
 - **Byline:** set to **Tom** on every page.
 - **Contact email:** `setupdesk.au@gmail.com`. It shows on the About, Privacy and Disclosure pages.
+- **Live at:** https://setupdesk.com.au
 - **Not done yet:**
-  - Netlify deploy, if you haven't connected it
-  - photos
+  - your own photos (the Rockstar screenshots fill the top of each page for now; other photo spots stay hidden)
   - AdSense
   - a retailer affiliate program for the TVs and consoles (see RETAILER-AFFILIATES.md)
 
@@ -77,7 +77,7 @@ These are things I couldn't fully verify, or that are your call:
 ## Next steps
 
 1. **Netlify:** connected. The site is `setup-desk-1d4d` (`setup-desk-1d4d.netlify.app`), and it deploys from GitHub on every push.
-   - The deploy log should say `Amazon tag: setupdesk-22`, `Site URL: https://setupdesk.com.au` and `Tagged 33 Amazon links`.
+   - The deploy log should say `Amazon tag: setupdesk-22`, `Site URL: https://setupdesk.com.au` and `Tagged 38 Amazon links`.
    - **Each production deploy costs 15 of your 300 monthly credits.** Commit locally and push once at the end of a session.
 2. **On your phone**, tap a "Check price" button on the live site. The Amazon address should end in `tag=setupdesk-22`.
 3. **Add your TikTok profile** under "Websites and mobile apps" in Associates Central before putting Amazon links on TikTok. Remember the 180-day / 3-sales window started when you signed up.
@@ -109,7 +109,6 @@ The page HTML in `site/` is the source of truth. Edit it directly and follow `CL
 - **setupdesk.com.au** is the primary domain. **www.setupdesk.com.au** redirects to it automatically.
 - **setupdesk.online** and **www.setupdesk.online** are domain aliases.
   - The redirect rules in `netlify.toml` send them to https://setupdesk.com.au.
-  - Those rules only take effect after the **next deploy**. Until then, setupdesk.online shows the same site without redirecting.
 - **DNS is hosted by Netlify** (Netlify DNS zones for both domains). VentraIP is only the registrar, so the nameservers at VentraIP must be Netlify's:
   - setupdesk.com.au: `dns1.p03.nsone.net`, `dns2.p03.nsone.net`, `dns3.p03.nsone.net`, `dns4.p03.nsone.net`
   - setupdesk.online: `dns1.p04.nsone.net`, `dns2.p04.nsone.net`, `dns3.p04.nsone.net`, `dns4.p04.nsone.net`
@@ -161,6 +160,47 @@ None of these add new Amazon products. They reuse the 7 links checked by hand on
 1. **Is the bar too much?** Scroll a guide on your phone. If it feels pushy, the trigger point is `0.33` in `setupGtaBar()`; raise it to show the bar later.
 2. **If you add a cookie banner later** (e.g. Google's consent message for AdSense), the bar already hides for `.fc-consent-root`, `.cookie-notice` and `[data-cookie-notice]`. Check it on your phone.
 3. **Amazon reports:** after a few weeks, compare clicks in Associates Central with the bar on and off. Close it on your phone to see the site without it.
+
+## What changed on 22 November 2026 (Claude Code)
+
+- **Domain everywhere:**
+  - Every page except the 404 has a canonical tag and `og:url` with the full https://setupdesk.com.au address.
+  - The sitemap and robots.txt use it too.
+  - `/go/` is no longer in the sitemap, because it's set to noindex (hidden from Google).
+- **Rockstar screenshots** near the top of the home page and five guides (TV, console, storage, settings, money tracker):
+  - Each has the caption "Image: Rockstar Games" and its own alt text.
+  - Each comes in three WebP sizes in `site/assets/img` (800, 1200 and 1600 wide), and the browser picks the smallest that looks sharp.
+  - Phones download 19–104KB per image. The largest file is 185KB.
+  - The full-size originals in `photos/` are git-ignored.
+  - The accessories page has no screenshot, because none was supplied for it.
+- **Amazon boxes** directly under "What I'd buy":
+  - **Console** ("Grab these from Amazon"): GTA VI, DualSense, PowerA dock.
+  - **TV:** LG B6 48" and LG QNED86B 65". They're introduced as "Amazon AU doesn't sell our picks", and the B6 line says the 48" C6 is better at a similar price.
+  - **Accessories:** DualSense, PowerA dock, Arctis Nova 3P.
+  - **Storage:** no product. Amazon AU only has imported SSDs at inflated prices, so the box says to buy the drive locally.
+  - No Our pick, Best value or Skip labels changed.
+- **First-visitor fixes:**
+  - **PS5 Pro price gap:** the site said "$400 more" in some places and "$480 less" in others. It now says $400 more than the disc PS5 and $480 more than the Digital Edition.
+  - **LG C6 65" price:** the room table showed $2,500–3,999, while its review said $2,500–3,000. It now says $2,500–3,000 in both.
+  - **Console reviews:** the closing TV line is now worded differently under each console instead of repeating.
+  - **Repeated products:** the "Next step" box no longer repeats a product already shown higher on the page (console, storage and accessories pages).
+  - **Settings page:** the "Next step" box no longer repeats the "Still need a TV?" panel. The in-game graphics item gives an instruction instead of only promising future content.
+  - **Money tracker intro:** it no longer claims "every method in the game" while the table is empty.
+  - **Disclosure line:** added to the Settings and Money tracker pages, which have Amazon links but were missing it.
+  - **Home intro:** says "worth the extra money" instead of "$400".
+  - **Home page on phones:** the photo now sits under the headline, above the quick answers.
+- **Checked:**
+  - Every page was screenshotted on mobile and desktop.
+  - No page scrolls sideways.
+  - All 38 Amazon links have `rel="sponsored"`, and the build tags all of them with `setupdesk-22`.
+  - No visible placeholders.
+  - All images load with alt text and captions.
+  - The GTA bar still hides near the game box, footer and cookie notices.
+
+### Check these yourself
+1. **Rockstar's image terms:** these are official screenshots, captioned "Image: Rockstar Games". Rockstar's press materials are usually for editorial coverage. If you plan ads around them or use them on TikTok, check Rockstar's terms. Replace them with your own photos when you can.
+2. **The TV page on a phone is long before the first table:** photo, What I'd buy, Amazon box, then the verdict. If it feels slow to get going, the Amazon box is the easiest thing to move lower.
+3. **HTTPS:** confirm Netlify shows the certificate as active under **Domain management → HTTPS**.
 
 ## Still to do
 - **Money from TVs and consoles:** researched on 21 November, see RETAILER-AFFILIATES.md and below.
